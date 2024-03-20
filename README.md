@@ -10,10 +10,10 @@ A 3D figure generator based on Three.js and ANTLR.
 
 Starts the development server.
 
-#### `yarn build`
+#### `yarn antlr`
 
-Builds the app for production.
+Generates ANTLR files, should be run after modifying the grammar.
 
 #### `yarn lint`
 
-Applies linting using ESLint and Prettier, including imports sorting.
+Lints the code using ESLint and Prettier.
