@@ -1,9 +1,12 @@
 import { Canvas } from "@react-three/fiber";
 
+import { DisplayProps } from "./types.ts";
 import { Box, Pyramid, Sphere } from "../figures/examples";
 import { Light } from "../utils/Light";
 
-export const Display = () => {
+export const Display = ({ shapeInput }: DisplayProps) => {
+  console.log(shapeInput);
+
   return (
     <Canvas>
       <Light />
