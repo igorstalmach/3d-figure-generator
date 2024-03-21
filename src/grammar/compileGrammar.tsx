@@ -1,21 +1,21 @@
 import { CharStreams, CommonTokenStream } from "antlr4ts";
 import { ParseTreeWalker } from "antlr4ts/tree";
 
-import { CustomListener } from "./CustomListener.ts";
-import { SimpleGrammarLexer } from "./gen/src/grammar/SimpleGrammarLexer.ts";
-import { SimpleGrammarListener } from "./gen/src/grammar/SimpleGrammarListener.ts";
-import { SimpleGrammarParser } from "./gen/src/grammar/SimpleGrammarParser.ts";
+import { CustomGeometryListener } from "./CustomListener.ts";
+import { GeometryGrammarLexer } from "./gen/src/grammar/GeometryGrammarLexer.ts";
+import { GeometryGrammarListener } from "./gen/src/grammar/GeometryGrammarListener.ts";
+import { GeometryGrammarParser } from "./gen/src/grammar/GeometryGrammarParser.ts";
 
 export const compileGrammar = (input: string): string => {
   const inputStream = CharStreams.fromString(input);
-  const lexer = new SimpleGrammarLexer(inputStream);
+  const lexer = new GeometryGrammarLexer(inputStream);
   const tokenStream = new CommonTokenStream(lexer);
-  const parser = new SimpleGrammarParser(tokenStream);
+  const parser = new GeometryGrammarParser(tokenStream);
 
-  const tree = parser.expr();
+  const tree = parser.drawCmd();
 
-  const listener: CustomListener = new CustomListener();
-  ParseTreeWalker.DEFAULT.walk(listener as SimpleGrammarListener, tree);
+  const listener: CustomGeometryListener = new CustomGeometryListener();
+  ParseTreeWalker.DEFAULT.walk(listener as GeometryGrammarListener, tree);
 
-  return String(listener.result);
+  return String(listener);
 };
