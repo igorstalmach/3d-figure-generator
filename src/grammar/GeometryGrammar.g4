@@ -14,7 +14,7 @@ shape
     ;
 
 sphere
-    : 'sphere' ','? radius? position? color? rotation?
+    : 'sphere' (',' radius? position? color? rotation?)?
     ;
 
 box
