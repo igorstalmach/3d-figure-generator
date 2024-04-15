@@ -1,36 +1,32 @@
-import { SimpleGrammarListener } from "./gen/src/grammar/SimpleGrammarListener";
+import { GeometryGrammarListener } from "./gen/src/grammar/GeometryGrammarListener";
 import {
-  ExprContext,
-  TermContext,
-} from "./gen/src/grammar/SimpleGrammarParser";
+  SphereContext,
+  BoxContext,
+  PyramidContext,
+} from "./gen/src/grammar/GeometryGrammarParser";
 
-export class CustomListener implements SimpleGrammarListener {
-  public result: number = 0;
-  private values: Map<TermContext, number> = new Map();
-
-  enterExpr(context: ExprContext) {
-    console.log("Entering expression:", context.text);
+export class CustomGeometryListener implements GeometryGrammarListener {
+  enterSphere(ctx: SphereContext) {
+    console.log(`Entering a sphere with parameters: ${ctx.text}`);
   }
 
-  exitExpr(context: ExprContext) {
-    if (context.childCount === 1) {
-      this.result = this.values.get(context.term(0)) ?? 0;
-    } else {
-      let tempResult = this.values.get(context.term(0)) ?? 0;
-      for (let i = 1; i <= context.childCount / 2; i++) {
-        const operator = context.getChild(2 * i - 1).text;
-        const value = this.values.get(context.term(i)) ?? 0;
-        if (operator === "+") {
-          tempResult += value;
-        } else if (operator === "-") {
-          tempResult -= value;
-        }
-      }
-      this.result = tempResult;
-    }
+  exitSphere(_ctx: SphereContext) {
+    console.log(`Exiting a sphere`);
   }
 
-  exitTerm(context: TermContext) {
-    this.values.set(context, parseInt(context.text, 10));
+  enterBox(ctx: BoxContext) {
+    console.log(`Entering a box with parameters: ${ctx.text}`);
+  }
+
+  exitBox(_ctx: BoxContext) {
+    console.log(`Exiting a box`);
+  }
+
+  enterPyramid(ctx: PyramidContext) {
+    console.log(`Entering a pyramid with parameters: ${ctx.text}`);
+  }
+
+  exitPyramid(_ctx: PyramidContext) {
+    console.log(`Exiting a pyramid`);
   }
 }
