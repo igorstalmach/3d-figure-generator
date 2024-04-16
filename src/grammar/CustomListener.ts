@@ -1,9 +1,9 @@
-import { GeometryGrammarListener } from "./gen/src/grammar/GeometryGrammarListener";
+import { GeometryGrammarListener } from "./gen/GeometryGrammarListener";
 import {
   BoxContext,
   PyramidContext,
   SphereContext,
-} from "./gen/src/grammar/GeometryGrammarParser";
+} from "./gen/GeometryGrammarParser";
 import { Blueprint, ShapeType } from "../shared/types.ts";
 
 export class CustomGeometryListener implements GeometryGrammarListener {
@@ -12,10 +12,10 @@ export class CustomGeometryListener implements GeometryGrammarListener {
   exitSphere(ctx: SphereContext): void {
     const tempSphere: Blueprint = {
       type: ShapeType.Sphere,
-      size: ctx.radius()?.text,
-      position: ctx.position()?.text,
-      color: ctx.color()?.text,
-      rotation: ctx.rotation()?.text,
+      size: ctx.radius()?.text.slice(6).slice(0, -1),
+      position: ctx.position()?.text.slice(8).slice(0, -1),
+      color: ctx.color()?.text.slice(5).slice(0, -1),
+      rotation: ctx.rotation()?.text.slice(8).slice(0, -1),
     };
 
     this.memory.push(tempSphere);
@@ -24,10 +24,10 @@ export class CustomGeometryListener implements GeometryGrammarListener {
   exitBox(ctx: BoxContext): void {
     const tempBox: Blueprint = {
       type: ShapeType.Box,
-      size: ctx.size()?.text,
-      position: ctx.position()?.text,
-      color: ctx.color()?.text,
-      rotation: ctx.rotation()?.text,
+      size: ctx.size()?.text.slice(4).slice(0, -1),
+      position: ctx.position()?.text.slice(8).slice(0, -1),
+      color: ctx.color()?.text.slice(5).slice(0, -1),
+      rotation: ctx.rotation()?.text.slice(8).slice(0, -1),
     };
 
     this.memory.push(tempBox);
@@ -36,10 +36,10 @@ export class CustomGeometryListener implements GeometryGrammarListener {
   exitPyramid(ctx: PyramidContext): void {
     const tempPyramid: Blueprint = {
       type: ShapeType.Pyramid,
-      size: ctx.size()?.text,
-      position: ctx.position()?.text,
-      color: ctx.color()?.text,
-      rotation: ctx.rotation()?.text,
+      size: ctx.size()?.text.slice(4).slice(0, -1),
+      position: ctx.position()?.text.slice(8).slice(0, -1),
+      color: ctx.color()?.text.slice(5).slice(0, -1),
+      rotation: ctx.rotation()?.text.slice(8).slice(0, -1),
     };
 
     this.memory.push(tempPyramid);
