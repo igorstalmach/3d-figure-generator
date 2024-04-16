@@ -2,7 +2,7 @@ import { PyramidProps } from "./types.ts";
 import { Shape } from "../../Shape";
 
 export const Pyramid = ({
-  position = [1, 1, 1],
+  position = [0, 0, 0],
   size = [1, 1, 4],
   color = "orange",
   rotationSpeed = [1, 1, 1],

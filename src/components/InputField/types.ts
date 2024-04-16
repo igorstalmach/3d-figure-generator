@@ -1,3 +1,5 @@
+import { Blueprint } from "../../shared/types.ts";
+
 export interface InputFieldProps {
-  setGrammarOutput: (input: string) => void;
+  setGrammarOutput: (input: Blueprint[]) => void;
 }

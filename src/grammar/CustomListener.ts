@@ -1,32 +1,51 @@
 import { GeometryGrammarListener } from "./gen/src/grammar/GeometryGrammarListener";
 import {
-  SphereContext,
   BoxContext,
   PyramidContext,
+  SphereContext,
 } from "./gen/src/grammar/GeometryGrammarParser";
+import { Blueprint, ShapeType } from "../shared/types.ts";
 
 export class CustomGeometryListener implements GeometryGrammarListener {
-  enterSphere(ctx: SphereContext) {
-    console.log(`Entering a sphere with parameters: ${ctx.text}`);
+  memory: Blueprint[] = [];
+
+  exitSphere(ctx: SphereContext): void {
+    const tempSphere: Blueprint = {
+      type: ShapeType.Sphere,
+      size: ctx.radius()?.text,
+      position: ctx.position()?.text,
+      color: ctx.color()?.text,
+      rotation: ctx.rotation()?.text,
+    };
+
+    this.memory.push(tempSphere);
   }
 
-  exitSphere(_ctx: SphereContext) {
-    console.log(`Exiting a sphere`);
+  exitBox(ctx: BoxContext): void {
+    const tempBox: Blueprint = {
+      type: ShapeType.Box,
+      size: ctx.size()?.text,
+      position: ctx.position()?.text,
+      color: ctx.color()?.text,
+      rotation: ctx.rotation()?.text,
+    };
+
+    this.memory.push(tempBox);
   }
 
-  enterBox(ctx: BoxContext) {
-    console.log(`Entering a box with parameters: ${ctx.text}`);
+  exitPyramid(ctx: PyramidContext): void {
+    const tempPyramid: Blueprint = {
+      type: ShapeType.Pyramid,
+      size: ctx.size()?.text,
+      position: ctx.position()?.text,
+      color: ctx.color()?.text,
+      rotation: ctx.rotation()?.text,
+    };
+
+    this.memory.push(tempPyramid);
   }
 
-  exitBox(_ctx: BoxContext) {
-    console.log(`Exiting a box`);
-  }
-
-  enterPyramid(ctx: PyramidContext) {
-    console.log(`Entering a pyramid with parameters: ${ctx.text}`);
-  }
-
-  exitPyramid(_ctx: PyramidContext) {
-    console.log(`Exiting a pyramid`);
+  returnMemory(): Blueprint[] {
+    return this.memory;
   }
 }

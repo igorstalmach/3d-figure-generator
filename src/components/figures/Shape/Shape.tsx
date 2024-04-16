@@ -15,9 +15,9 @@ export const Shape = ({
   const ref = useRef<THREE.Mesh>(null!);
 
   useFrame((_state, delta) => {
-    ref.current.rotation.x += delta * rotationSpeed[0];
-    ref.current.rotation.y += delta * rotationSpeed[1];
-    ref.current.rotation.z += delta * rotationSpeed[2];
+    ref.current.rotation.x += delta * rotationSpeed![0];
+    ref.current.rotation.y += delta * rotationSpeed![1];
+    ref.current.rotation.z += delta * rotationSpeed![2];
   });
 
   return (

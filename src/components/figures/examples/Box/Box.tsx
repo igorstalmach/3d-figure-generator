@@ -2,7 +2,7 @@ import { BoxProps } from "./types.ts";
 import { Shape } from "../../Shape";
 
 export const Box = ({
-  position = [1, 1, 1],
+  position = [0, 0, 0],
   size = [1, 1, 1],
   color = "orange",
   rotationSpeed = [1, 1, 1],

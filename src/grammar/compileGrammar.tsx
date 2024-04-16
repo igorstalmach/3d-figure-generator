@@ -5,8 +5,9 @@ import { CustomGeometryListener } from "./CustomListener.ts";
 import { GeometryGrammarLexer } from "./gen/src/grammar/GeometryGrammarLexer.ts";
 import { GeometryGrammarListener } from "./gen/src/grammar/GeometryGrammarListener.ts";
 import { GeometryGrammarParser } from "./gen/src/grammar/GeometryGrammarParser.ts";
+import { Blueprint } from "../shared/types.ts";
 
-export const compileGrammar = (input: string): string => {
+export const compileGrammar = (input: string): Blueprint[] => {
   const inputStream = CharStreams.fromString(input);
   const lexer = new GeometryGrammarLexer(inputStream);
   const tokenStream = new CommonTokenStream(lexer);
@@ -17,5 +18,5 @@ export const compileGrammar = (input: string): string => {
   const listener: CustomGeometryListener = new CustomGeometryListener();
   ParseTreeWalker.DEFAULT.walk(listener as GeometryGrammarListener, tree);
 
-  return String(listener);
+  return listener.returnMemory();
 };

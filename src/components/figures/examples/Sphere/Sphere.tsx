@@ -2,7 +2,7 @@ import { SphereProps } from "./types.ts";
 import { Shape } from "../../Shape";
 
 export const Sphere = ({
-  position = [1, 1, 1],
+  position = [0, 0, 0],
   radius = 1,
   color = "orange",
   rotationSpeed = [1, 1, 1],

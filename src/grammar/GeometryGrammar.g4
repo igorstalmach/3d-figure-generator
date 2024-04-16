@@ -14,15 +14,15 @@ shape
     ;
 
 sphere
-    : 'sphere' (',' radius? position? color? rotation?)?
+    : 'sphere' (radius? position? color? rotation?)?
     ;
 
 box
-    : 'box,' ','? size? position? color? rotation?
+    : 'box' (size? position? color? rotation?)?
     ;
 
 pyramid
-    : 'pyramid,' ','? size? position? color? rotation?
+    : 'pyramid' (size? position? color? rotation?)?
     ;
 
 
