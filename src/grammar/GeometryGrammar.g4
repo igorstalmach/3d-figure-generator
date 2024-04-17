@@ -75,7 +75,7 @@ INT
     ;
 
 COLOR
-    : 'red' | 'blue' | 'green' | 'yellow' | 'orange'
+    : 'red' | 'blue' | 'green' | 'yellow' | 'orange' | 'purple' | 'black' | 'gray' | 'brown'
     ;
 
 HEX_COLOR
