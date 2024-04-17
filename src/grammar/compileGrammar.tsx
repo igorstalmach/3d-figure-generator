@@ -13,10 +13,14 @@ export const compileGrammar = (input: string): Blueprint[] => {
   const tokenStream = new CommonTokenStream(lexer);
   const parser = new GeometryGrammarParser(tokenStream);
 
-  const tree = parser.drawCmd();
+  const tree = parser.command();
 
   const listener: CustomGeometryListener = new CustomGeometryListener();
   ParseTreeWalker.DEFAULT.walk(listener as GeometryGrammarListener, tree);
+
+  if (parser.numberOfSyntaxErrors > 0) {
+    return [];
+  }
 
   return listener.returnMemory();
 };

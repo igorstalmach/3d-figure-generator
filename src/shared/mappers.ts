@@ -5,6 +5,10 @@ export const mapStringToArray = (
     return undefined;
   }
 
+  if (!str.includes("/")) {
+    return [parseFloat(str), parseFloat(str), parseFloat(str)];
+  }
+
   return str.split("/").map((item) => parseFloat(item)) as [
     number,
     number,
