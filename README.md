@@ -22,7 +22,7 @@ A web-based 3D figure generator based on [React](https://reactjs.org/), [Three.j
 
 ### Technologies
 
-- [React 18](https://reactjs.org/), [TypeScript 5.2](https://www.typescriptlang.org/)
+- [React 18](https://reactjs.org/), [Vite 5.1](https://vitejs.dev/), [TypeScript 5.2](https://www.typescriptlang.org/)
 - [Three.js 0.162](https://threejs.org/)
 - [ANTLR 4 TypeScript target](https://www.antlr.org/)
 
@@ -88,9 +88,9 @@ In order to generate the DSL script from an SVG file, the following steps must b
 
    > SVG file must be created with Inkscape, as the script relies on a namespace utilized by the Inkscape SVG format.
 
-2. Provide the SVG file as an input to the **svgToXmi.py** Python script (**transformations/scripts** folder in the project root directory) in order to convert the SVG file into a custom [XMI metamodel](https://www.omg.org/spec/XMI/2.4.2/About-XMI).
+2. Provide the SVG file as an input to the **svgToXmi.py** Python script (**transformations/scripts** folder in the project root directory) in order to convert the SVG file into a custom [XMI model](https://www.omg.org/spec/XMI/2.4.2/About-XMI).
 
-   > The metamodel is an [Ecore metamodel](https://eclipse.dev/modeling/emft/search/concepts/subtopic.html), defined by the [Eclipse Modeling Framework](https://en.wikipedia.org/wiki/Eclipse_Modeling_Framework). It is located in the **transformations/models** folder in the root directory.
+   > The model is based on an [Ecore metamodel](https://eclipse.dev/modeling/emft/search/concepts/subtopic.html), defined by the [Eclipse Modeling Framework](https://en.wikipedia.org/wiki/Eclipse_Modeling_Framework). It is located in the **transformations/models** folder in the root directory.
 
    The following transformations are applied:
    1. Shapes: rect, ellipse, path -> Box, Sphere, Pyramid
