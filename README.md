@@ -1,5 +1,13 @@
 # 3D Figure Generator
 
+## Table of contents
+1. [Description](#description)
+2. [3D Figure Generator (DSL to 3D Scene)](#3d-figure-generator-dsl-to-3d-scene)
+    1. [Technologies](#technologies)
+    2. [Domain-specific language (DSL)](#domain-specific-language-dsl)
+    3. [Getting started](#getting-started)
+3. [SVG to DSL](#svg-to-dsl)
+
 ## Description
 
 The project is divided into two parts:
@@ -18,44 +26,41 @@ A web-based 3D figure generator based on [React](https://reactjs.org/), [Three.j
 - [Three.js 0.162](https://threejs.org/)
 - [ANTLR 4 TypeScript target](https://www.antlr.org/)
 
-### Domain specific language (DSL)
+### Domain-specific language (DSL)
 
 ![DSL Script](./images/dsl.png)
 
 The project accepts a custom domain-specific language (DSL) script as an input, that describes a scene with 3D figures. The DSL script is parsed using ANTLR and transformed into a scene with Three.js.
 
-I. The DSL language supports the following shapes: 
-- Sphere
-- Box
-- Pyramid
+1. The DSL language supports the following shapes: 
+   - Sphere
+   - Box
+   - Pyramid
 
-II. In order to parse the DSL script, the following syntax rules must be respected:
-- Each shape must be initiated by the draw keyword
-- Each shape must be followed by a set of parentheses
-- Shapes must be separated by a semicolon ";"
+2. In order to parse the DSL script, the following syntax rules must be respected:
+   - Each shape must be initiated by the draw keyword
+   - Each shape must be followed by a set of parentheses
+   - Shapes must be separated by a semicolon ";"
+   - Example input:
+     - **draw sphere()**
+     - **draw sphere() ; draw box()**
 
-Example input: **draw sphere()**
+3. Available shape parameters:
+   - Size (Box, Pyramid), Radius (Sphere)
+   - Position
+   - Color
+   - Rotation
 
-Example input: **draw sphere() ; draw box()**
-
-III. Available parameters:
-- Size (Box, Pyramid), Radius (Sphere)
-- Position
-- Color
-- Rotation
-
-IV. In order to add parameters to the shapes, the following syntax rules must be respected:
-- Each parameter must be followed by a comma ","
-- Each parameter must be included within the shape parentheses
-- **position** and **rotation** must be a float
-- **radius/size** must be an integer
-- **color** can be either string or a hex value
-
-Example input: **draw sphere(radius 2, position 1.0/1.0/1.0, color red, rotation 2.0/1.0/4.5,)**
-
-Example input: **draw box(size 2/2/3, position 4.0/4.0/4.0, color blue, rotation 1.5/2.0/3.5,)**
-
-Example input: **draw sphere(radius 2, position -1.0/1.0/-3.0, color red, rotation 1.0/1.0/4.5,) ; draw box(size 2/2/3, position -4.0/-4.0/-4.0, color blue, rotation 1.5/2.0/3.5,) ; draw pyramid(size 2/2/3, position 3.0/1.0/-1.0, color yellow, rotation 1.5/1.0/1.5,)**
+4. In order to add parameters to the shapes, the following syntax rules must be respected:
+   - Each parameter must be followed by a comma ","
+   - Each parameter must be included within the shape parentheses
+   - **position** and **rotation** must be a float
+   - **radius/size** must be an integer
+   - **color** can be either string or a hex value
+   - Example input:
+     - **draw sphere(radius 2, position 1.0/1.0/1.0, color red, rotation 2.0/1.0/4.5,)**
+     - **draw box(size 2/2/3, position 4.0/4.0/4.0, color blue, rotation 1.5/2.0/3.5,)**
+     - **draw sphere(radius 2, position -1.0/1.0/-3.0, color red, rotation 1.0/1.0/4.5,) ; draw box(size 2/2/3, position -4.0/-4.0/-4.0, color blue, rotation 1.5/2.0/3.5,) ; draw pyramid(size 2/2/3, position 3.0/1.0/-1.0, color yellow, rotation 1.5/1.0/1.5,)**
 
 ### Getting started
 
