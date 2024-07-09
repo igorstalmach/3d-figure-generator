@@ -1,0 +1,32 @@
+[template public xmiToDsl(a  shapesMetamodelApplication)]
+[file ('dsl.txt', false, 'UTF-8')]
+
+[for (sphere  shapesMetamodelSphere  a.sphere)]
+    draw sphere(
+        [if sphere.radius-notEmpty()]radius [sphere.radius], [if]
+        [if sphere.posX-notEmpty()]position [sphere.posX][sphere.posY][sphere.posZ], [if]
+        [if sphere.color-notEmpty()]color [sphere.color], [if]
+        [if sphere.rotSpeedX-notEmpty()]rotation [sphere.rotSpeedX][sphere.rotSpeedY][sphere.rotSpeedZ], [if]
+    );
+[for]
+
+[for (box  shapesMetamodelBox  a.box)]
+    draw box(
+        [if box.sizeX-notEmpty()]size [box.sizeX][box.sizeY][box.sizeZ], [if]
+        [if box.posX-notEmpty()]position [box.posX][box.posY][box.posZ], [if]
+        [if box.color-notEmpty()]color [box.color], [if]
+        [if box.rotSpeedX-notEmpty()]rotation [box.rotSpeedX][box.rotSpeedY][box.rotSpeedZ], [if]
+    );
+[for]
+
+[for (pyramid  shapesMetamodelPyramid  a.pyramid)]
+    draw pyramid(
+        [if pyramid.sizeX-notEmpty()]size [pyramid.sizeX][pyramid.sizeY][pyramid.sizeZ], [if]
+        [if pyramid.posX-notEmpty()]position [pyramid.posX][pyramid.posY][pyramid.posZ], [if]
+        [if pyramid.color-notEmpty()]color [pyramid.color], [if]
+        [if pyramid.rotSpeedX-notEmpty()]rotation [pyramid.rotSpeedX][pyramid.rotSpeedY][pyramid.rotSpeedZ], [if]
+    );
+[for]
+
+[file]
+[template]

@@ -45,14 +45,14 @@ export const Instruction = () => (
       Example input:{" "}
       <b>
         draw sphere(radius 2, position 1.0/1.0/1.0, color red, rotation
-        2.0/1.0/4.5)
+        2.0/1.0/4.5,)
       </b>
     </p>
     <p>
       Example input:{" "}
       <b>
         draw box(size 2/2/3, position 4.0/4.0/4.0, color blue, rotation
-        1.5/2.0/3.5)
+        1.5/2.0/3.5,)
       </b>
     </p>
   </InstructionContainer>
