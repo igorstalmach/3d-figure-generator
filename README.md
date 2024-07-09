@@ -3,14 +3,20 @@
 ## Description
 
 The project is divided into two parts:
-1. A React application that transforms a custom domain-specific language (DSL) into a scene with 3D figures
-2. A workflow to transform an SVG file into a custom DSL script
+1. A React application that transforms a custom domain-specific language (DSL) into a scene with 3D figures.
+2. A workflow to transform an SVG file into the custom DSL script.
 
 ## 3D Figure Generator (DSL to 3D Scene)
 
 A web-based 3D figure generator based on [React](https://reactjs.org/), [Three.js](https://threejs.org/) and [ANTLR language recognition tool](https://www.antlr.org/).
 
 ![3D Figure Generator](./images/screenshot.png)
+
+### Technologies
+
+- [React 18](https://reactjs.org/), [TypeScript 5.2](https://www.typescriptlang.org/)
+- [Three.js 0.162](https://threejs.org/)
+- [ANTLR 4 TypeScript target](https://www.antlr.org/)
 
 ### Domain specific language (DSL)
 
@@ -75,12 +81,10 @@ In order to generate the DSL script from an SVG file, the following steps must b
 
 1. Create an SVG file with Inkscape. Only Rectangle, Circle and Star shapes are supported.
 
-   > [!WARNING]
    > SVG file must be created with Inkscape, as the script relies on a namespace utilized by the Inkscape SVG format.
 
 2. Provide the SVG file as an input to the **svgToXmi.py** Python script (**transformations/scripts** folder in the project root directory) in order to convert the SVG file into a custom [XMI metamodel](https://www.omg.org/spec/XMI/2.4.2/About-XMI).
-   
-   > [!NOTE]
+
    > The metamodel is an [Ecore metamodel](https://eclipse.dev/modeling/emft/search/concepts/subtopic.html), defined by the [Eclipse Modeling Framework](https://en.wikipedia.org/wiki/Eclipse_Modeling_Framework). It is located in the **transformations/models** folder in the root directory.
 
    The following transformations are applied:
@@ -92,7 +96,7 @@ In order to generate the DSL script from an SVG file, the following steps must b
 
 3. Create and set up an [Acceleo project in Eclipse](https://eclipse.dev/acceleo/). Use the provided Ecore metamodel. Transform the XMI model, created in step 2., into the custom DSL script by running the **xmiToDsl.mtl** Acceleo transformation (**transformations/scripts** folder in the project root directory).
 
-4. The output of the transformation is ready to be used as an input for the 3D Figure Generator.
+4. Output of the transformation is ready to be used as an input for the 3D Figure Generator.
 
 The custom Ecore metamodel diagram:
 
